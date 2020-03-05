@@ -9,3 +9,28 @@
 // also want to call this function again when the user saves their preferences to
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
+let form = document.querySelector("form");
+let name = document.getElementById("name");
+let greeting = document.getElementById("greeting");
+let color1 = document.getElementById("background-color");
+let color2 = document.getElementById("foreground-color")
+
+function bgColor() {
+    document.body.style.backgroundColor = color1.value;
+}
+function fgColor(){
+    document.body.style.color = color2.value;
+}
+function NameChange(){
+    greeting.textContent = "welcome" + " " + name.value;
+}
+
+form.addEventListener("submit", event => {
+    event.preventDefault();
+    bgColor();
+    fgColor();
+    NameChange();
+    localStorage.setItem("name", name.value);
+    localStorage.setItem("backgroundcolor", color1.value );
+    localStorage.setItem("foregroundcolor", color2.value);
+});
